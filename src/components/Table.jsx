@@ -6,7 +6,7 @@ export default function Table() {
   const { isLoading, planetsData } = useContext(AppContext);
   return (
     // { isLoading &&}
-    <div className={ isLoading ? 'row placeholder col-12' : 'row' }>
+    <div className={ isLoading ? 'row placeholder-wave col-12' : 'row' }>
       <table className="table table-striped table-dark table-hover table-sm align-middle">
         <thead>
           <tr>
@@ -27,7 +27,7 @@ export default function Table() {
         </thead>
         <tbody>
           { planetsData
-          && planetsData.results.map((planet) => (
+          && planetsData.map((planet) => (
             <TableItem
               key={ planet.name }
               planetName={ planet.name }

@@ -16,7 +16,7 @@ export default function useFetch() {
       }
 
       const json = await response.json();
-      return json;
+      return json.results;
     } catch (error) {
       setError(errors);
     } finally {
