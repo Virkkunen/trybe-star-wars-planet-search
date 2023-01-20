@@ -15,14 +15,14 @@ export default function SearchProvider({ children }) {
   useEffect(() => {
     if (filter) {
       setFilteredPlanets(filterPlanets(planetsData, filter));
+      return;
     }
+    setFilteredPlanets(null);
   }, [filter, planetsData]);
 
   return (
     <SearchContext.Provider
-      value={ {
-        filter, setFilter, handleChange, filteredPlanets,
-      } }
+      value={ { filter, setFilter, filteredPlanets, handleChange } }
     >
       { children }
     </SearchContext.Provider>
