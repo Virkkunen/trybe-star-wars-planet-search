@@ -1,12 +1,15 @@
 import React from 'react';
 import Table from './components/Table';
 import './App.css';
+import AppProvider from './context/AppProvider';
 
 function App() {
   return (
-    <div>
-      <Table />
-    </div>
+    <AppProvider>
+      <div>
+        <Table />
+      </div>
+    </AppProvider>
   );
 }
 

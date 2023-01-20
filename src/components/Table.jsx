@@ -3,22 +3,22 @@ import React from 'react';
 export default function Table() {
   return (
     <div>
-      <table className="table-auto">
+      <table className="table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Rotation Period</th>
-            <th>Orbital Period</th>
-            <th>Diameter</th>
-            <th>Climate</th>
-            <th>Gravity</th>
-            <th>Terrain</th>
-            <th>Surface Water</th>
-            <th>Population</th>
-            <th>Films</th>
-            <th>Created</th>
-            <th>Edited</th>
-            <th>URL</th>
+            <th scope="col">Name</th>
+            <th scope="col">Rotation Period</th>
+            <th scope="col">Orbital Period</th>
+            <th scope="col">Diameter</th>
+            <th scope="col">Climate</th>
+            <th scope="col">Gravity</th>
+            <th scope="col">Terrain</th>
+            <th scope="col">Surface Water</th>
+            <th scope="col">Population</th>
+            <th scope="col">Films</th>
+            <th scope="col">Created</th>
+            <th scope="col">Edited</th>
+            <th scope="col">URL</th>
           </tr>
         </thead>
       </table>
