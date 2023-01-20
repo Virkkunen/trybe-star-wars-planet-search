@@ -6,7 +6,7 @@ import SearchContext from './SearchContext';
 
 export default function SearchProvider({ children }) {
   const [filter, setFilter] = useState('');
-  const [filteredPlanets, setFilteredPlanets] = useState([]);
+  const [filteredPlanets, setFilteredPlanets] = useState(null);
   const { planetsData } = useContext(AppContext);
   const { filterPlanets } = useFilter();
 
