@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import SearchContext from '../context/SearchContext';
 
 export default function AppliedFilters() {
-  const { filtersApplied } = useContext(SearchContext);
+  const { filtersApplied, removeFilter } = useContext(SearchContext);
 
   return (
     <div className="row mb-3">
@@ -18,6 +18,8 @@ export default function AppliedFilters() {
             <button
               type="button"
               className="btn btn-sm btn-danger"
+              name={ filter.column }
+              onClick={ removeFilter }
             >
               X
             </button>

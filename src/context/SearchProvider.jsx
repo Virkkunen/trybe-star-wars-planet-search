@@ -27,6 +27,16 @@ export default function SearchProvider({ children }) {
     if (planetsData) setFilteredPlanets(planetsData);
   }, [planetsData]);
 
+  const removeFilter = ({ target: { name } }) => {
+    setColumns([
+      ...columns,
+      name,
+    ]);
+
+    const unapplyFilter = (arr) => arr.filter((f) => (f.column !== name));
+    setFiltersApplied(unapplyFilter(filtersApplied));
+  };
+
   const handleChange = ({ target }) => {
     setFilter({
       ...filter,
@@ -60,13 +70,12 @@ export default function SearchProvider({ children }) {
     <SearchContext.Provider
       value={ {
         filter,
-        setFilter,
         filteredPlanets,
         handleChange,
         btnClick,
         filtersApplied,
-        setFiltersApplied,
         columns,
+        removeFilter,
       } }
     >
       { children }
