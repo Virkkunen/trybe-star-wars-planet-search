@@ -27,6 +27,15 @@ export default function SearchProvider({ children }) {
     if (planetsData) setFilteredPlanets(planetsData);
   }, [planetsData]);
 
+  const restorePlanetArray = () => {
+    const pFilters = planetsData;
+    filtersApplied.forEach((f) => {
+      console.log(pFilters);
+      console.log(f);
+    });
+    console.log(pFilters);
+  };
+
   const removeFilter = ({ target: { name } }) => {
     setColumns([
       ...columns,
@@ -35,6 +44,7 @@ export default function SearchProvider({ children }) {
 
     const unapplyFilter = (arr) => arr.filter((f) => (f.column !== name));
     setFiltersApplied(unapplyFilter(filtersApplied));
+    restorePlanetArray();
   };
 
   const handleChange = ({ target }) => {
