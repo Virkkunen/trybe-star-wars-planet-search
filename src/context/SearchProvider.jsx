@@ -21,7 +21,7 @@ export default function SearchProvider({ children }) {
   });
 
   const btnClick = () => {
-    console.log('click');
+    setFilteredPlanets(filterColumn(planetsData, filter));
   };
 
   useEffect(() => {

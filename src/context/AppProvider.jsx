@@ -10,6 +10,7 @@ function AppProvider({ children }) {
   useEffect(() => {
     const getPlanetsData = async () => {
       const pData = await fetchData();
+      pData.forEach((planet) => delete planet.residents);
       setPlanetsData(pData);
     };
     getPlanetsData();
