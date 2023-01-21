@@ -15,21 +15,24 @@ export default function SearchProvider({ children }) {
   const { planetsData } = useContext(AppContext);
   const { filterPlanets, filterColumn } = useFilter();
 
+  useEffect(() => {
+    if (planetsData) setFilteredPlanets(planetsData);
+  }, [planetsData]);
+
   const handleChange = ({ target }) => setFilter({
     ...filter,
     [target.name]: target.value,
   });
 
   const btnClick = () => {
-    setFilteredPlanets(filterColumn(planetsData, filter));
+    setFilteredPlanets(filterColumn(filteredPlanets, filter));
   };
 
   useEffect(() => {
     if (filter.name) {
-      setFilteredPlanets(filterPlanets(planetsData, filter.name));
+      setFilteredPlanets(filterPlanets(filteredPlanets, filter.name));
       return;
     }
-    setFilteredPlanets(null);
   }, [filter, planetsData]);
 
   return (
