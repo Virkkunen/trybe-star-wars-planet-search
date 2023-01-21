@@ -5,6 +5,7 @@ import AppProvider from './context/AppProvider';
 import SearchProvider from './context/SearchProvider';
 import Filter from './components/Filter';
 import FilterRow from './components/FilterRow';
+import AppliedFilters from './components/AppliedFilters';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <div className="container-fluid">
           <Filter />
           <FilterRow />
+          <AppliedFilters />
           <Table />
         </div>
       </SearchProvider>

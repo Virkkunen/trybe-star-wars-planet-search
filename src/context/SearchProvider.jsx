@@ -36,8 +36,10 @@ export default function SearchProvider({ children }) {
 
   const btnClick = () => {
     setFilteredPlanets(filterColumn(filteredPlanets, filter));
-    const filterToApply = { [filter.column]: filter };
-    filtersApplied.push(filterToApply); // isso parece ilegal
+    setFiltersApplied([
+      ...filtersApplied,
+      filter,
+    ]);
     const newColumns = columns.filter((col) => !filter.column.includes(col));
     setColumns(newColumns);
     setFilter({
