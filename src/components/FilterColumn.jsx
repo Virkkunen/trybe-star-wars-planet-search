@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import SearchContext from '../context/SearchContext';
 
 export default function FilterColumn() {
-  const { filter, handleChange } = useContext(SearchContext);
+  const { filter, handleChange, columns } = useContext(SearchContext);
 
   return (
     <div
@@ -16,11 +16,14 @@ export default function FilterColumn() {
         value={ filter.column }
         onChange={ handleChange }
       >
-        <option value="population">population</option>
-        <option value="orbital_period">orbital_period</option>
-        <option value="diameter">diameter</option>
-        <option value="rotation_period">rotation_period</option>
-        <option value="surface_water">surface_water</option>
+        { columns.map((col) => (
+          <option
+            value={ col }
+            key={ col }
+          >
+            {col}
+          </option>
+        ))}
       </select>
     </div>
   );

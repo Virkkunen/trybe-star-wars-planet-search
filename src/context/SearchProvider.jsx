@@ -12,6 +12,14 @@ export default function SearchProvider({ children }) {
     value: '0',
   });
   const [filteredPlanets, setFilteredPlanets] = useState(null);
+  const [filtersApplied, setFiltersApplied] = useState([]);
+  const [columns, setColumns] = useState([
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ]);
   const { planetsData } = useContext(AppContext);
   const { filterPlanets, filterColumn } = useFilter();
 
@@ -19,13 +27,23 @@ export default function SearchProvider({ children }) {
     if (planetsData) setFilteredPlanets(planetsData);
   }, [planetsData]);
 
-  const handleChange = ({ target }) => setFilter({
-    ...filter,
-    [target.name]: target.value,
-  });
+  const handleChange = ({ target }) => {
+    setFilter({
+      ...filter,
+      [target.name]: target.value,
+    });
+  };
 
   const btnClick = () => {
     setFilteredPlanets(filterColumn(filteredPlanets, filter));
+    const filterToApply = { [filter.column]: filter };
+    filtersApplied.push(filterToApply); // isso parece ilegal
+    const newColumns = columns.filter((col) => !filter.column.includes(col));
+    setColumns(newColumns);
+    setFilter({
+      ...filter,
+      column: columns[0],
+    });
   };
 
   useEffect(() => {
@@ -38,7 +56,16 @@ export default function SearchProvider({ children }) {
 
   return (
     <SearchContext.Provider
-      value={ { filter, setFilter, filteredPlanets, handleChange, btnClick } }
+      value={ {
+        filter,
+        setFilter,
+        filteredPlanets,
+        handleChange,
+        btnClick,
+        filtersApplied,
+        setFiltersApplied,
+        columns,
+      } }
     >
       { children }
     </SearchContext.Provider>
