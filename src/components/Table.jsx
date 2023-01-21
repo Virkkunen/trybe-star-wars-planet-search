@@ -8,7 +8,13 @@ export default function Table() {
   const { filteredPlanets } = useContext(SearchContext);
   return (
     // { isLoading &&}
-    <div className={ isLoading ? 'row placeholder-wave col-12' : 'row' }>
+    <div
+      className={
+        isLoading
+          ? 'row placeholder-wave col-12 gx-1'
+          : 'row gx-1 justify-content-center'
+      }
+    >
       <table className="table table-striped table-dark table-hover table-sm align-middle">
         <thead>
           <tr>
