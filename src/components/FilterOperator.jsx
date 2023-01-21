@@ -14,9 +14,9 @@ export default function FilterOperator() {
         value={ filter.comparison }
         onChange={ handleChange }
       >
-        <option value="gt">Maior que</option>
-        <option value="lt">Menor que</option>
-        <option value="eq">Igual a</option>
+        <option value="maior que">maior que</option>
+        <option value="menor que">menor que</option>
+        <option value="igual a">igual a</option>
       </select>
     </div>
   );

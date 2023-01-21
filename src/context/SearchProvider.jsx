@@ -7,9 +7,9 @@ import SearchContext from './SearchContext';
 export default function SearchProvider({ children }) {
   const [filter, setFilter] = useState({
     name: '',
-    column: '',
-    comparison: '',
-    value: '',
+    column: 'population',
+    comparison: 'maior que',
+    value: '0',
   });
   const [filteredPlanets, setFilteredPlanets] = useState(null);
   const { planetsData } = useContext(AppContext);
@@ -19,6 +19,10 @@ export default function SearchProvider({ children }) {
     ...filter,
     [target.name]: target.value,
   });
+
+  const btnClick = () => {
+    console.log('click');
+  };
 
   useEffect(() => {
     if (filter.name) {
@@ -30,7 +34,7 @@ export default function SearchProvider({ children }) {
 
   return (
     <SearchContext.Provider
-      value={ { filter, setFilter, filteredPlanets, handleChange } }
+      value={ { filter, setFilter, filteredPlanets, handleChange, btnClick } }
     >
       { children }
     </SearchContext.Provider>

@@ -14,11 +14,11 @@ export default function useFilter() {
     (planet) => {
       // switch vai funcionar melhor, obrigado Josué
       switch (op) {
-      case 'gt':
+      case 'maior que':
         return Number(val) > Number(planet[col]);
-      case 'lt':
+      case 'menor que':
         return Number(val) < Number(planet[col]);
-      case 'eq':
+      case 'igual a':
         return Number(val) === Number(planet[col]);
       default:
         return null;
