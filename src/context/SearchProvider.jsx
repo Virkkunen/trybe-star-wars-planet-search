@@ -33,7 +33,8 @@ export default function SearchProvider({ children }) {
       setFilteredPlanets(filterPlanets(filteredPlanets, filter.name));
       return;
     }
-  }, [filter, planetsData]);
+    setFilteredPlanets(planetsData);
+  }, [filter.name, planetsData]);
 
   return (
     <SearchContext.Provider
