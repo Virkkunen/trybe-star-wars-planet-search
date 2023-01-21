@@ -16,7 +16,8 @@ export default function Filter() {
             className="form-control"
             placeholder="Filtro..."
             onChange={ handleChange }
-            value={ filter }
+            value={ filter.name }
+            name="name"
             data-testid="name-filter"
             disabled={ isLoading }
           />

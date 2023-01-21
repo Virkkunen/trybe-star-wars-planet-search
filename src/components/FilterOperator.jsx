@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import SearchContext from '../context/SearchContext';
 
 export default function FilterOperator() {
+  const { filter, handleChange } = useContext(SearchContext);
+
   return (
     <div className="col">
       <select
@@ -8,6 +11,8 @@ export default function FilterOperator() {
         name="comparison"
         id="comparison"
         data-testid="comparison-filter"
+        value={ filter.comparison }
+        onChange={ handleChange }
       >
         <option value="gt">Maior que</option>
         <option value="lt">Menor que</option>

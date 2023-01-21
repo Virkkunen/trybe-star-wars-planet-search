@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import SearchContext from '../context/SearchContext';
 
-export default function FilterNumber() {
+export default function FilterColumn() {
+  const { filter, handleChange } = useContext(SearchContext);
+
   return (
     <div
       className="col"
@@ -10,6 +13,8 @@ export default function FilterNumber() {
         name="column"
         id="column"
         data-testid="column-filter"
+        value={ filter.column }
+        onChange={ handleChange }
       >
         <option value="population">Population</option>
         <option value="orbital_period">Orbital Period</option>

@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterButton from './FilterButton';
-import FilterNumber from './FilterNumber';
+import FilterColumn from './FilterColumn';
 import FilterOperator from './FilterOperator';
 import FilterValue from './FilterValue';
 
@@ -9,7 +9,7 @@ export default function FilterRow() {
     <div
       className="row mb-3 justify-content-center"
     >
-      <FilterNumber />
+      <FilterColumn />
       <FilterOperator />
       <FilterValue />
       <FilterButton />

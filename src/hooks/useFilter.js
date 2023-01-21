@@ -10,7 +10,24 @@ export default function useFilter() {
       .includes(filter.toLowerCase()),
   );
 
+  const filterColumn = (arr, { col, op, val }) => arr.filter(
+    (planet) => {
+      // switch vai funcionar melhor, obrigado Josué
+      switch (op) {
+      case 'gt':
+        return Number(val) > Number(planet[col]);
+      case 'lt':
+        return Number(val) < Number(planet[col]);
+      case 'eq':
+        return Number(val) === Number(planet[col]);
+      default:
+        return null;
+      }
+    },
+  );
+
   return {
     filterPlanets,
+    filterColumn,
   };
 }

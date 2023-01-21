@@ -5,16 +5,24 @@ import AppContext from './AppContext';
 import SearchContext from './SearchContext';
 
 export default function SearchProvider({ children }) {
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState({
+    name: '',
+    column: '',
+    comparison: '',
+    value: '',
+  });
   const [filteredPlanets, setFilteredPlanets] = useState(null);
   const { planetsData } = useContext(AppContext);
-  const { filterPlanets } = useFilter();
+  const { filterPlanets, filterColumn } = useFilter();
 
-  const handleChange = ({ target: { value } }) => setFilter(value);
+  const handleChange = ({ target }) => setFilter({
+    ...filter,
+    [target.name]: target.value,
+  });
 
   useEffect(() => {
-    if (filter) {
-      setFilteredPlanets(filterPlanets(planetsData, filter));
+    if (filter.name) {
+      setFilteredPlanets(filterPlanets(planetsData, filter.name));
       return;
     }
     setFilteredPlanets(null);
