@@ -27,14 +27,22 @@ export default function SearchProvider({ children }) {
     if (planetsData) setFilteredPlanets(planetsData);
   }, [planetsData]);
 
-  const restorePlanetArray = () => {
-    const pFilters = planetsData;
-    filtersApplied.forEach((f) => {
-      console.log(pFilters);
-      console.log(f);
-    });
-    console.log(pFilters);
-  };
+  useEffect(() => {
+    if (filtersApplied.length < 1) {
+      setFilteredPlanets(planetsData);
+    }
+
+    const test = async (filters) => {
+      // ganhei cidadania italia só com esse espaguete aqui
+      let pFilter = planetsData;
+      filters.forEach((f) => {
+        pFilter = filterColumn(pFilter, f);
+      });
+      setFilteredPlanets(pFilter);
+    };
+
+    test(filtersApplied);
+  }, [filtersApplied]);
 
   const removeFilter = ({ target: { name } }) => {
     setColumns([
@@ -44,8 +52,9 @@ export default function SearchProvider({ children }) {
 
     const unapplyFilter = (arr) => arr.filter((f) => (f.column !== name));
     setFiltersApplied(unapplyFilter(filtersApplied));
-    restorePlanetArray();
   };
+
+  const removeAllFilters = () => setFiltersApplied([]);
 
   const handleChange = ({ target }) => {
     setFilter({
@@ -86,6 +95,7 @@ export default function SearchProvider({ children }) {
         filtersApplied,
         columns,
         removeFilter,
+        removeAllFilters,
       } }
     >
       { children }
