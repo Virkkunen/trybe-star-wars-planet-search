@@ -2,14 +2,15 @@ import React, { useContext } from 'react';
 import SearchContext from '../context/SearchContext';
 
 export default function FilterOrder() {
-  const { filter } = useContext(SearchContext);
+  const { filter, handleSort, handleClickSort } = useContext(SearchContext);
   return (
     <div className="col">
       <select
         className="dropdown-html"
-        name="order"
+        name="column"
         value={ filter.order.column }
         data-testid="column-sort"
+        onChange={ handleSort }
       >
         <option value="population">population</option>
         <option value="orbital_period">orbital_period</option>
@@ -22,9 +23,12 @@ export default function FilterOrder() {
           <input
             className="form-check-input"
             type="radio"
-            name="order"
+            name="sort"
             id="ASC"
+            value="ASC"
             data-testid="column-sort-input-asc"
+            onChange={ handleSort }
+
           />
           ASC
         </label>
@@ -33,9 +37,12 @@ export default function FilterOrder() {
           <input
             className="form-check-input"
             type="radio"
-            name="order"
+            name="sort"
+            value="DESC"
             id="DESC"
             data-testid="column-sort-input-desc"
+            onChange={ handleSort }
+
           />
           DESC
         </label>
@@ -44,6 +51,7 @@ export default function FilterOrder() {
         className="btn btn-sm btn-primary"
         type="button"
         data-testid="column-sort-button"
+        onClick={ handleClickSort }
       >
         Ordenar
       </button>

@@ -89,6 +89,30 @@ export default function SearchProvider({ children }) {
     setFilteredPlanets(planetsData);
   }, [filter.name, planetsData]);
 
+  const handleSort = ({ target: { value, name } }) => {
+    setFilter({
+      ...filter,
+      order: {
+        ...filter.order,
+        [name]: value,
+      },
+    });
+  };
+
+  const handleClickSort = () => {
+    const { order: { column, sort } } = filter;
+    // filtra só os com numeros
+    const known = filteredPlanets.filter((planet) => planet[column] !== 'unknown');
+    const unknown = filteredPlanets.filter((planet) => planet[column] === 'unknown');
+
+    const sortedArr = known.sort((a, b) => ((sort === 'ASC')
+      ? Number(a[column]) - Number(b[column])
+      : Number(b[column]) - Number(a[column])));
+
+    const sortedPlanets = [...sortedArr, ...unknown];
+    setFilteredPlanets(sortedPlanets);
+  };
+
   return (
     <SearchContext.Provider
       value={ {
@@ -100,6 +124,8 @@ export default function SearchProvider({ children }) {
         columns,
         removeFilter,
         removeAllFilters,
+        handleSort,
+        handleClickSort,
       } }
     >
       { children }
