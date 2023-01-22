@@ -12,6 +12,7 @@ function App() {
     <AppProvider>
       <SearchProvider>
         <div className="container-fluid">
+          <h1>teste</h1>
           <Filter />
           <FilterRow />
           <AppliedFilters />
