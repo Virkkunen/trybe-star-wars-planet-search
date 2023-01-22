@@ -20,7 +20,7 @@ export default function TableItem(props) {
 
   return (
     <tr>
-      <td>{planetName}</td>
+      <td data-testid="planet-name">{planetName}</td>
       <td>{rotation}</td>
       <td>{orbital}</td>
       <td>{diameter}</td>

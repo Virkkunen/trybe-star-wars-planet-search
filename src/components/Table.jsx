@@ -4,7 +4,7 @@ import SearchContext from '../context/SearchContext';
 import TableItem from './TableItem';
 
 export default function Table() {
-  const { isLoading, planetsData } = useContext(AppContext);
+  const { isLoading } = useContext(AppContext);
   const { filteredPlanets } = useContext(SearchContext);
   return (
     // { isLoading &&}
@@ -34,25 +34,6 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          { (planetsData && !filteredPlanets)
-          && planetsData.map((planet) => (
-            <TableItem
-              key={ planet.name }
-              planetName={ planet.name }
-              rotation={ planet.rotation_period }
-              orbital={ planet.orbital_period }
-              diameter={ planet.diameter }
-              climate={ planet.climate }
-              gravity={ planet.gravity }
-              terrain={ planet.terrain }
-              water={ planet.surface_water }
-              pop={ planet.population }
-              films={ planet.films }
-              created={ planet.created }
-              edited={ planet.edited }
-              url={ planet.url }
-            />
-          ))}
           { (filteredPlanets)
           && filteredPlanets.map((planet) => (
             <TableItem

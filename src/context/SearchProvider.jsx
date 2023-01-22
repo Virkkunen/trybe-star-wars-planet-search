@@ -10,6 +10,10 @@ export default function SearchProvider({ children }) {
     column: 'population',
     comparison: 'maior que',
     value: '0',
+    order: {
+      column: 'population',
+      sort: 'ASC',
+    },
   });
   const [filteredPlanets, setFilteredPlanets] = useState(null);
   const [filtersApplied, setFiltersApplied] = useState([]);

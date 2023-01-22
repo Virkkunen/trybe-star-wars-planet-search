@@ -3,6 +3,7 @@ import AppContext from '../context/AppContext';
 import FilterButton from './FilterButton';
 import FilterColumn from './FilterColumn';
 import FilterOperator from './FilterOperator';
+import FilterOrder from './FilterOrder';
 import FilterValue from './FilterValue';
 
 export default function FilterRow() {
@@ -17,6 +18,7 @@ export default function FilterRow() {
       <FilterOperator />
       <FilterValue />
       <FilterButton />
+      <FilterOrder />
     </div>
   );
 }
